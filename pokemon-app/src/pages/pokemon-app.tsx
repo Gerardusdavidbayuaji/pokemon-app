@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button"
 
-const App = () => {
+const PokemonApp = () => {
   return (
     <div>
+      <Button className="bg-neutral-300">test</Button>
+      <Button className="bg-neutral-300">test</Button>
       <Button className="bg-neutral-300">test</Button>
     </div>
   )
 }
 
-export default App;
+export default PokemonApp;
