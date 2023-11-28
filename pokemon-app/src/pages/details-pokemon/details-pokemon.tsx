@@ -1,32 +1,34 @@
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 const DetailsPokemon = () => {
   return (
-    <div className="w-full h-screen font-poppins bg-[url('src/assets/background.png')]">
-      {/* header */}
-      <header className="w-full sticky top-0 bg-[#005086]/60 h-16 z-50">
-        <nav className="mx-auto flex container items-center justify-between py-4">
-          <h3 className="font-poppins text-xl text-white hidden sm:block">Pokemoon.</h3> 
-          <h3 className="font-poppins font-normal text-white">My Pokemon</h3> 
-        </nav>
-      </header>
-      
-      <div className="mx-auto container font-poppins py-10">
-        <h1 className="text-white text-center font-poppins font-bold sm:text-2xl md:text-5xl">POKEMOON.</h1>
-        <p className="text-white text-center font-poppins pb-7 sm:text-sm md:text-2xl">A catalogue of your pokemon</p>
-        <Input className="rounded-full sm:w-1/4 md:w-1/2 w-full mx-auto"></Input>
-      </div>
+    <div className="h-full flex items-center justify-center bg-white object-center">
+      <div className="w-1/2 h-screen py-5">
 
-      {/* konten utama */}
-      <div className="bg-white container grow mx-auto h-3/6 py-4 px-8 flex flex-col">
-        <p>test</p>
-      </div>
-      {/* footer */}
-      <footer className="w-full h-16">
-        <div className="flex items-center container px-6 h-full">
-          <p>test footer</p>
+        {/* kelas gambar */}
+        <div className="h-3/5 flex flex-col items-center justify-center pt-10 bg-[url('src/assets/background.png')] bg-no-repeat rounded-lg">
+          <img src="src/assets/contoh-pokemon.png" alt="joko" className="h-64 w-auto"/>
         </div>
-      </footer>
+
+        {/* kelas nama */}
+        <div className="w-5/6 mx-auto flex flex-col items-center justify-center rounded-lg bg-[#005086] mt-[-22px]">
+          <p className="py-2 text-white text-lg font-bold">Joko Susilo</p> 
+        </div>
+        <div className="py-5">
+          <p>
+            Type: grass, poison <br />
+            Stats: hp, attack, defense, special-attack, special-defense, speed <br />
+            Abilities: overgrow, chlorophyll Some Moves: razor-wind, swords-dance, cut, bind, <br />vine-whip
+          </p>
+        </div>
+        <Button className="mx-auto flex flex-col items-center justify-center w-24 bg-[#005086]">
+          Catch!
+        </Button>
+        <div className="mx-auto flex items-center justify-between pt-4">
+          <h3 className="font-poppins font-normal text-[#005086]">My Pokemon</h3> 
+          <img src="src/assets/back-icon.png" className="w-7 h-auto" alt="back-icon" />
+        </div>
+      </div>
     </div>
   )
 }
