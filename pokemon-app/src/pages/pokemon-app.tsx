@@ -1,11 +1,9 @@
-import { Button } from "@/components/ui/button"
+import ListPokemon from "./list-pokemon/list-pokemon";
 
 const PokemonApp = () => {
   return (
     <div>
-      <Button className="bg-neutral-300">test</Button>
-      <Button className="bg-neutral-300">test</Button>
-      <Button className="bg-neutral-300">test</Button>
+      <ListPokemon/>
     </div>
   )
 }
