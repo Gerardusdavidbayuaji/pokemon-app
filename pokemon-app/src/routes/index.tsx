@@ -7,12 +7,12 @@ import MyPokemon from "@/pages/my-pokemon/my-pokemon";
 export default function Router() {
   const router = createBrowserRouter([ 
     {
-      path: "/pokemon-app",
-      element: <PokemonApp />,
+      path: "/",
+      element: <ListPokemon />,
     },
     {
-      path: "/list-pokemon",
-      element: <ListPokemon />,
+      path: "/pokemon-app",
+      element: <PokemonApp />,
     },
     {
       path: "/details-pokemon",
