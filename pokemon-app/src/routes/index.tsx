@@ -15,7 +15,7 @@ export default function Router() {
       element: <PokemonApp />,
     },
     {
-      path: "/details-pokemon",
+      path: "/details-pokemon/:id_monster",
       element: <DetailsPokemon />,
     },
     {
