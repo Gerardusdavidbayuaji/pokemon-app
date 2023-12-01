@@ -1,15 +1,14 @@
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 
 import { PokemonsType } from "@/utils/types/pokemon";
-import FooterMyPokemon from "@/components/footer-mypokemon";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 const DetailsPokemon = () => {
   const [pokemon, setPokemon] = useState<PokemonsType>();
   const { id_monster } = useParams();
-  const [formName, setFormName] = useState<boolean>(false);
-  const [newName, setNewName] = useState<string>("");
 
   useEffect(() => {
     fetchDataPokemons();
@@ -26,39 +25,11 @@ const DetailsPokemon = () => {
       });
   }
 
-  function submitHandler() {
-    const checkExist = localStorage.getItem("MyPokemon");
-    if (checkExist) {
-      let parseData = JSON.parse(checkExist);
-      if (pokemon) {
-        pokemon.sub_name = newName;
-      }
-      parseData.push(pokemon);
-
-      localStorage.setItem("MyPokemon", JSON.stringify(parseData));
-      alert("Added to My Pokemon");
-    } else if (pokemon) {
-      pokemon.sub_name = newName;
-      localStorage.setItem("MyPokemon", JSON.stringify([pokemon]));
-      alert("Added to My Pokemon");
-    }
-  }
-
-  function handleCatch() {
-    const randomize = Math.random().toFixed();
-    if (randomize !== "0") {
-      alert(`Congratulation! You caught ${pokemon?.name}`);
-      setFormName(true);
-    } else {
-      alert(`Sorry you failed`);
-      setFormName(false);
-    }
-  }
-
-
   return (
-    <div className="w-full h-screen flex items-center justify-center bg-[url('../src/assets/background.png')] bg-no-repeat font-poppins">
-      <div className="grid grid-cols-2  gap-4 p-4">
+    <div className="w-full h-screen font-poppins bg-[url('src/assets/background.png')] bg-no-repeat flex flex-col">
+      <Navbar/>
+      <div className="container flex-grow mx-auto flex flex-col bg-[#EEEEEE]">
+      <div className="grid grid-cols-2 gap-4 py-4">
         <div className=" flex flex-col justify-center items-center content-center w-30 h-30 shadow-lg rounded-lg overflow-hidden bg-[#FF6969] border-1 shadow-black/40">
           <img
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id_monster}.svg`}
@@ -68,7 +39,7 @@ const DetailsPokemon = () => {
           <div className="grid grid-cols-2 gap-2 px-2">
             {pokemon?.types.map((data, index) => (
               <p
-                className="bg-[#053B50] border-1 rounded-lg text-center p-1 text-white"
+                className="bg-[#b7d0da] border-1 rounded-lg text-center p-1 text-white"
                 key={index}
               >
                 <span className="p-1">{data.type.name}</span>
@@ -109,42 +80,17 @@ const DetailsPokemon = () => {
             </p>
           ))}
         </div>
-        <div className="grid col-span-2  justify-center mt-3">
-          {formName ? (
-            <form className="mb-7">
-              <label className="flex flex-col">
-                <span className=" ">Enter Name</span>
-                <div>
-                <input
-                  className="text-black p-3 rounded-xl mb-3 w-64"
-                  id="email"
-                  onChange={(e) => setNewName(e.target.value)}
-                />
-                </div>
-                <div className="flex items-center justify-center">
-                <button
-                  className="border-1 shadow-lg bg-[#00FFCA] shadow-black/40 rounded-lg p-3 hover:cursor-pointer w-32 text-white font-semibold"
-                  onClick={() => submitHandler()}
-                >
-                  Submit
-                </button>
-                </div>
-              </label>
-            </form>
-          ) : (
-            <p className="hidden"></p>
-          )}
+        <div className="grid col-span-2 justify-center mt-3">
           <div className="flex items-center justify-center">
-          <a
-            className="border-1 shadow-lg shadow-black/40 rounded-lg p-3 hover:cursor-pointer w-32 text-center text-white font-semibold bg-[#FF6969]"
-            onClick={() => handleCatch()}
-          >
-            {" "}
-            Catch!
-          </a>
+            <div className="border-1 shadow-lg shadow-black/40 rounded-lg p-3 hover:cursor-pointer w-32 text-center text-white font-semibold bg-[#FF6969]">
+            <Link to="/battle-pokemon">Catch!</Link>
+            </div>
           </div>
         </div>
-      <FooterMyPokemon/>
+        </div>
+      </div>
+      <div>
+      <Footer />
       </div>
     </div>
   )

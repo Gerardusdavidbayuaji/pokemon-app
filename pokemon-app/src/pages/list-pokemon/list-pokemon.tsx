@@ -94,7 +94,7 @@ const ListPokemon = () => {
         </form>
       </div>
       <div className="bg-[#EEEEEE] container flex-grow mx-auto flex flex-col">
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 py-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 py-10">
           {pokemons.map((pokemon, index) => (
             <div
               key={index}
