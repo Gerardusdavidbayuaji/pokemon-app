@@ -63,7 +63,7 @@ const DetailsPokemon = () => {
   }
 
   return (
-    <div className="w-full h-screen font-poppins bg-[url('public/assets/background.png')] bg-no-repeat flex flex-col">
+    <div className="w-full h-screen font-poppins bg-[url('/assets/background.png')] bg-no-repeat flex flex-col">
       <Navbar />
       <div className="container flex-grow mx-auto flex flex-col bg-[#EEEEEE]">
         <div className="grid grid-cols-2 gap-4 py-4">
