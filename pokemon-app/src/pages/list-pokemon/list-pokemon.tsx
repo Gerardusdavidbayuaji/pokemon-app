@@ -98,7 +98,7 @@ const ListPokemon = () => {
           {pokemons.map((pokemon, index) => (
             <div
               key={index}
-              className=" flex flex-col justify-center items-center content-center w-30 h-30 border-4 shadow-lg shadow-black border-[#EEEEEE] rounded-xl "
+              className="flex flex-col justify-center items-center content-center w-30 h-30 border-4 shadow-lg shadow-black border-[#EEEEEE] rounded-xl "
               onClick={() => {
                 onClickDetail(index + 1);
               }}
@@ -108,7 +108,7 @@ const ListPokemon = () => {
                   index + 1
                 }.svg`}
                 alt=""
-                className="p-4 h-64 object-cover"
+                className="p-4 h-64"
               />
               <div className="bg-[#005086] w-full text-lg uppercase p-2 rounded-xl">
                 <p className="text-white text-center font-poppins">{pokemon.name}</p>
