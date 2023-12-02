@@ -1,4 +1,4 @@
-# Pokemon-app
+# Pokemon app
 Hello everyone, the Pokemon app is a simple web platform that allows users to get, explore details, battle and catch Pokemon. Built with **React.js** and using **Tailwind CSS**, the app is hosted on **Vercel**. Pokemon data sources are obtained through integration with PokeAPI. lets try!
 
 ## Features
