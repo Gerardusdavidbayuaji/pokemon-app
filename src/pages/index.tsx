@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button";
+import Layout from "@/components/Layout";
 
 const App = () => {
   return (
-    <div>
-      <Button>hayyy</Button>
-    </div>
+    <>
+      <Layout />
+    </>
   );
 };
 
