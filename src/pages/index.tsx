@@ -1,10 +1,11 @@
+import PokemonCard from "@/components/PokemonCard";
 import Layout from "@/components/Layout";
 
 const App = () => {
   return (
     <>
       <Layout>
-        <h3>h3okemonCard</h3>
+        <PokemonCard />
       </Layout>
     </>
   );
