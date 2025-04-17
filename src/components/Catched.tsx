@@ -1,9 +1,9 @@
-import { LockKeyholeIcon } from "lucide-react";
+import { StarIcon } from "lucide-react";
 
 const Catched = () => {
   return (
-    <div className="flex items-center bg-amber-200 rounded-md p-2 cursor-pointer">
-      <LockKeyholeIcon />
+    <div className="flex items-center bg-white/20 text-white rounded-md p-2 cursor-pointer">
+      <StarIcon />
     </div>
   );
 };
