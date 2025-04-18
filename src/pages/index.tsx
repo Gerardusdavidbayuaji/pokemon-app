@@ -1,3 +1,4 @@
+import { useSearchParams } from "react-router";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -5,14 +6,18 @@ import { getPokemon, Response } from "@/utils/pokemon";
 import { formatId } from "@/utils/formatter";
 
 import PokemonCard from "@/components/PokemonCard";
+import Pagination from "@/components/Pagination";
 import Layout from "@/components/Layout";
 
 const App = () => {
   const [pokemons, setPokemons] = useState<Response>();
+  const [searchParams] = useSearchParams();
 
   const fetchPokemonDatas = async () => {
     try {
-      const response = await getPokemon();
+      const query = Object.fromEntries([...searchParams]);
+      const response = await getPokemon({ ...query });
+
       setPokemons(response);
     } catch (error: any) {
       toast("Upss, something when wrong!", {
@@ -23,7 +28,7 @@ const App = () => {
 
   useEffect(() => {
     fetchPokemonDatas();
-  }, []);
+  }, [searchParams]);
 
   return (
     <>
@@ -35,6 +40,7 @@ const App = () => {
             return <PokemonCard id={id} name={name} />;
           })}
         </div>
+        <Pagination />
       </Layout>
     </>
   );
