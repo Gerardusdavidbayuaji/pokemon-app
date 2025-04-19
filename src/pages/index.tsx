@@ -10,7 +10,7 @@ import Pagination from "@/components/Pagination";
 import Layout from "@/components/Layout";
 import { Loader } from "lucide-react";
 
-const App = () => {
+const Home = () => {
   const [pokemons, setPokemons] = useState<Response>();
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams] = useSearchParams();
@@ -59,4 +59,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;
