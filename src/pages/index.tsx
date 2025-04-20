@@ -1,5 +1,5 @@
-import { useSearchParams } from "react-router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
 
 import { getPokemon, Response } from "@/utils/pokemon";
@@ -11,15 +11,22 @@ import Layout from "@/components/Layout";
 import { Loader } from "lucide-react";
 
 const Home = () => {
-  const [pokemons, setPokemons] = useState<Response>();
-  const [isLoading, setIsLoading] = useState(false);
-  const [searchParams] = useSearchParams();
+  const [saveAllPokemons, setSaveAllPokemons] = useState<Response | null>(null);
+  const [pokemons, setPokemons] = useState<Response | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const fetchPokemonDatas = async () => {
+  const [searchParams] = useSearchParams();
+  const searchQuery = searchParams.get("search") || "";
+
+  const fetchPokemonDatas = useCallback(async () => {
     try {
       setIsLoading(true);
       const query = Object.fromEntries([...searchParams]);
       const response = await getPokemon({ ...query });
+
+      if (!searchQuery) {
+        setSaveAllPokemons(response);
+      }
 
       setPokemons(response);
       setIsLoading(false);
@@ -28,34 +35,56 @@ const Home = () => {
         description: error.toString(),
       });
     }
-  };
+  }, [searchParams, searchQuery]);
+
+  const filterPokemons = useCallback(() => {
+    if (!searchQuery) return saveAllPokemons;
+
+    return {
+      ...saveAllPokemons,
+      results:
+        saveAllPokemons?.results.filter((pokemon) =>
+          pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
+        ) || [],
+    };
+  }, [searchQuery, saveAllPokemons]);
 
   useEffect(() => {
-    fetchPokemonDatas();
-  }, [searchParams]);
+    if (searchQuery && saveAllPokemons) {
+      setPokemons(filterPokemons());
+    } else {
+      fetchPokemonDatas();
+    }
+  }, [searchQuery, saveAllPokemons, filterPokemons, fetchPokemonDatas]);
+
+  if (isLoading && !pokemons) {
+    return (
+      <div className="grow text-white flex gap-x-2 justify-center items-center h-full">
+        <Loader className="animate-spin" />
+        Loading pokemons...
+      </div>
+    );
+  }
 
   return (
-    <>
-      <Layout>
-        {isLoading ? (
-          <div className="grow text-white flex gap-x-2 justify-center items-center h-full">
-            <Loader className="animate-spin" />
-            loading...
+    <Layout>
+      {pokemons?.results.length === 0 ? (
+        <div className="grow text-white flex justify-center items-center h-full">
+          <p>No pokemon found for "{searchQuery}"</p>
+        </div>
+      ) : (
+        <>
+          <div className="grid grid-cols-2 gap-2 p-2 overflow-y-auto">
+            {pokemons?.results.map((pokemon) => {
+              const id = formatId(pokemon.url);
+              const name = pokemon.name;
+              return <PokemonCard key={id} id={id} name={name} />;
+            })}
           </div>
-        ) : (
-          <>
-            <div className="grid grid-cols-2 gap-2 p-2 overflow-y-auto">
-              {pokemons?.results.map((pokemon) => {
-                const id = formatId(pokemon.url);
-                const name = pokemon.name;
-                return <PokemonCard id={id} name={name} />;
-              })}
-            </div>
-            <Pagination />
-          </>
-        )}
-      </Layout>
-    </>
+          {!searchQuery && <Pagination />}
+        </>
+      )}
+    </Layout>
   );
 };
 

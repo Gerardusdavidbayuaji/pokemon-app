@@ -1,6 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Search from "@/pages/search";
 import Home from "@/pages";
 
 export default function Router() {
@@ -8,10 +7,6 @@ export default function Router() {
     {
       path: "/",
       element: <Home />,
-    },
-    {
-      path: "/search",
-      element: <Search />,
     },
   ]);
 
