@@ -4,9 +4,9 @@ export interface Request {
 }
 
 export interface Response {
-  count: number;
-  next: string;
-  previous: string;
+  count?: number | undefined;
+  next?: string | undefined;
+  previous?: string | undefined;
   results: {
     name: string;
     url: string;
