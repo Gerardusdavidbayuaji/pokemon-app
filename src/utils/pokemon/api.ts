@@ -1,5 +1,5 @@
 import axiosWithConfig from "../axiosWithConfig";
-import { Request, Response } from ".";
+import { Request, Response, Pokemon } from ".";
 
 export const getPokemon = async (params?: Request) => {
   try {
@@ -20,6 +20,15 @@ export const getPokemon = async (params?: Request) => {
 
     const response = await axiosWithConfig.get(url);
     return response.data as Response;
+  } catch (error: any) {
+    throw Error(error.response.data.message);
+  }
+};
+
+export const getDetailPokemon = async (id: number) => {
+  try {
+    const response = await axiosWithConfig(`/pokemon/${id}`);
+    return response.data as Pokemon;
   } catch (error: any) {
     throw Error(error.response.data.message);
   }
