@@ -141,3 +141,11 @@
 ::-webkit-scrollbar-thumb:hover {
   opacity: 1;
 }
+
+.pokemon-move-up {
+  animation: moveUp 2s infinite alternate;
+}
+
+.pokemon-move-down {
+  animation: moveDown 2s infinite alternate;
+}
