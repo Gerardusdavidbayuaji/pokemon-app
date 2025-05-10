@@ -13,9 +13,7 @@ const Layout = ({ children }: Props) => {
     <div className="bg-[#0d1d23] w-full h-screen flex justify-center">
       <div className="w-1/3 flex flex-col bg-white/10 backdrop-blur-sm rounded-md my-2 overflow-y-auto">
         <Header />
-        <main className="grow text-center overflow-y-auto webkit-scrollbar">
-          {children}
-        </main>
+        <main className="grow text-center overflow-y-auto">{children}</main>
         <Toaster />
         <Footer />
       </div>
