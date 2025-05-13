@@ -10,15 +10,19 @@ import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Layout from "@/components/Layout";
+import { toast } from "sonner";
 
 const DetailPokemon = () => {
   const [pokemon, setPokemon] = useState<Pokemon>();
   const params = useParams();
+
   const fetchDetailPokemon = async () => {
     try {
       const response = await getDetailPokemon(+params.id!);
       setPokemon(response);
-    } catch (error) {}
+    } catch (error) {
+      toast.error("Upss, error fetching datas");
+    }
   };
 
   useEffect(() => {
@@ -94,7 +98,7 @@ const DetailPokemon = () => {
             ))}
           </div>
         </div>
-        <Link to="/catch">
+        <Link to={`/catch/${pokemon?.id}`}>
           <Button className="mt-1 p-5 bg-[#1F8A70]">Catch</Button>
         </Link>
       </div>

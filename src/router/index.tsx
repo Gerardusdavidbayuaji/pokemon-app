@@ -15,7 +15,7 @@ export default function Router() {
       element: <DetailPokemon />,
     },
     {
-      path: "/catch",
+      path: "/catch/:id",
       element: <CatchPokemon />,
     },
   ]);
