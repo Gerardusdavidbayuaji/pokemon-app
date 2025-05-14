@@ -70,15 +70,15 @@ const DetailPokemon = () => {
 
         <div className="grid grid-cols-2 p-2 gap-x-2">
           <div className="rounded-md p-2 border-2 border-white/20 bg-[#43AB9220] text-white">
-            <h1 className="flex justify-start border-b-2 border-white/20 mb-2 font-medium text-2xl pb-1 italic">
+            <h1 className="flex justify-start border-b-2 border-white/20 mb-2 font-medium text-2xl pb-1 italic max-sm:text-lg">
               Information
             </h1>
             <div className="grid grid-cols-2 gap-y-2">
-              <p className="font-medium text-xl text-white/50">
+              <p className="font-medium text-xl text-white/50 max-sm:text-base">
                 Height <br />
                 <span className="font-normal text-lg">{pokemon?.height} m</span>
               </p>
-              <p className="font-medium text-xl text-white/50">
+              <p className="font-medium text-xl text-white/50 max-sm:text-base">
                 Weight
                 <br />
                 <span className="font-normal text-lg">
@@ -88,11 +88,14 @@ const DetailPokemon = () => {
             </div>
           </div>
           <div className="flex flex-col justify-start items-start rounded-md p-2 border-2 border-white/20 bg-[#00AAA020] text-white">
-            <h1 className="flex w-full border-b-2 border-white/20 mb-2 font-medium text-2xl pb-1 italic">
+            <h1 className="flex w-full border-b-2 border-white/20 mb-2 font-medium text-2xl pb-1 italic max-sm:text-lg">
               Abillity
             </h1>
             {pokemon?.abilities.map((data, index) => (
-              <p key={index} className="font-medium text-xl text-white/50">
+              <p
+                key={index}
+                className="font-medium text-xl text-white/50 max-sm:text-base"
+              >
                 › {formatTilte(data.ability.name)}
               </p>
             ))}

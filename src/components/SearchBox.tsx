@@ -25,7 +25,7 @@ const SearchBox = () => {
   );
 
   return (
-    <div className="w-64">
+    <div className="w-64 max-sm:w-36">
       <Input
         type="text"
         placeholder="Search pokemon"
