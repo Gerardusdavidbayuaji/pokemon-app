@@ -89,7 +89,7 @@ const CatchPokemon = () => {
             className="object-cover object-center"
           />
         </div>
-        <div className="flex bg-white outline-black outline-1 top-5 right-40 absolute p-2 rounded-md text-black z-20">
+        <div className="flex bg-white outline-black outline-1 top-5 right-40 absolute p-2 rounded-md text-black z-30">
           This is {pokemonDatas?.name}!
         </div>
         <div className="absolute -mt-48 -mr-24 z-20">
@@ -104,7 +104,7 @@ const CatchPokemon = () => {
           <img
             src={ball}
             alt="pokemon"
-            className="w-20 h-auto animate-bounce"
+            className="w-20 h-auto animate-bounce cursor-pointer"
             onClick={() => rateCatch()}
           />
 

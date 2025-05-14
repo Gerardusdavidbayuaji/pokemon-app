@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import DetailPokemon from "@/pages/detailPokemon";
 import CatchPokemon from "@/pages/catchPokemon";
 import Home from "@/pages";
+import MyPokemons from "@/pages/myPokemons";
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -17,6 +18,10 @@ export default function Router() {
     {
       path: "/catch/:id",
       element: <CatchPokemon />,
+    },
+    {
+      path: "/mypokemons",
+      element: <MyPokemons />,
     },
   ]);
 

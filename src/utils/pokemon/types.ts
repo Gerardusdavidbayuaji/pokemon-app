@@ -58,3 +58,8 @@ export interface Pokemon {
   }[];
   weight: number;
 }
+
+export interface CatchPokemons {
+  nickname: string;
+  data_pokemon: Pokemon;
+}
